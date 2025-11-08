@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.revrobotics.spark.SparkBase.ResetMode;
 
-public class SC25Launcher extends SubsystemBase
+public class SKT25Launcher extends SubsystemBase
 {
     // Create memory objects for both motors for public use.
     SparkMax launcherMotor;
@@ -29,7 +29,7 @@ public class SC25Launcher extends SubsystemBase
     //private double currentRampRate = 0.0;
 
     // Constructor for launcher subsystem.
-    public SC25Launcher()
+    public SKT25Launcher()
     {
         //Initialize motor objects.
         launcherMotor = new SparkMax(kLauncherMotor.ID, MotorType.kBrushless);

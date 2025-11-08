@@ -1,15 +1,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.SC25Intake;
+import frc.robot.subsystems.SKT25Intake;
 import static frc.robot.Konstants.IntakeConstants.kRollerSpeed;
 
 public class IntakeEjectCommand extends Command 
 {
-    private final SC25Intake intake;
+    private final SKT25Intake intake;
 
     // Constructor for the intake subsystem eject command.
-    public IntakeEjectCommand(SC25Intake intake)
+    public IntakeEjectCommand(SKT25Intake intake)
     {
         this.intake = intake;
     }

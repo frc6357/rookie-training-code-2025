@@ -2,6 +2,7 @@ package frc.robot.utils.filters;
 
 import edu.wpi.first.math.filter.SlewRateLimiter;
 
+@SuppressWarnings("unused")
 public class DriveStickFilter implements Filter {
     private double MaxSpeed;
 

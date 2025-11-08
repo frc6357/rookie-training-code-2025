@@ -1,14 +1,10 @@
 package frc.robot.subsystems;
-
 import static edu.wpi.first.units.Units.Degrees;
 import static edu.wpi.first.units.Units.Radians;
 import static edu.wpi.first.units.Units.Rotations;
-
-
 import static frc.robot.Ports.intakePorts.kArmMotor;
 import static frc.robot.Ports.intakePorts.kIntakeMotor;
 import static frc.robot.Konstants.IntakeConstants.*;
-
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.spark.ClosedLoopSlot;
 import com.revrobotics.spark.SparkBase.ControlType;
@@ -18,14 +14,14 @@ import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
-
 import edu.wpi.first.math.controller.ArmFeedforward;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Konstants.IntakeConstants.ArmPosition;
 
-public class SC25Intake extends SubsystemBase
+@SuppressWarnings("unused")
+public class SKT25Intake extends SubsystemBase
 {
     final double motorRatio = 12.5;
     final int gear1Rotation = 1;
@@ -48,7 +44,7 @@ public class SC25Intake extends SubsystemBase
     public boolean isRunning;
 
     // Intake constructor (used to initialize our motor object).
-    public SC25Intake()
+    public SKT25Intake()
     {
         //Initialize our motor object.
         intakeMotor = new SparkMax(kIntakeMotor.ID, MotorType.kBrushless);

@@ -12,11 +12,11 @@ import frc.robot.commands.IntakeJoystickCommand;
 import frc.robot.commands.IntakePosButtonCommand;
 import frc.robot.commands.IntakeRollerCommand;
 import frc.robot.commands.IntakeStopCommand;
-import frc.robot.subsystems.SC25Intake;
+import frc.robot.subsystems.SKT25Intake;
 
 public class SC25IntakeBinder implements CommandBinder
 {
-    Optional<SC25Intake> intakeSubsystem;
+    Optional<SKT25Intake> intakeSubsystem;
 
     // Intaking buttons.
     Trigger intakeDriverButton;
@@ -31,7 +31,7 @@ public class SC25IntakeBinder implements CommandBinder
     Trigger floorPositionButton;
 
     // Constructor for the intake binder.
-    public SC25IntakeBinder(Optional<SC25Intake> intakeSubsystem)
+    public SC25IntakeBinder(Optional<SKT25Intake> intakeSubsystem)
     {
         this.intakeSubsystem = intakeSubsystem;
         this.intakeDriverButton = Ports.DriverPorts.kIntake.button;
@@ -52,7 +52,7 @@ public class SC25IntakeBinder implements CommandBinder
         {
             return;
         }
-        SC25Intake intake = intakeSubsystem.get();
+        SKT25Intake intake = intakeSubsystem.get();
 
         zeroPositionButton.onTrue(Commands.sequence(new WaitCommand(0.5), new IntakePosButtonCommand(ArmPosition.kZeroPositionAngle, intake)));
         freightPositionButton.onTrue(Commands.sequence(new WaitCommand(0.5), new IntakePosButtonCommand(ArmPosition.kFreightAngle, intake)));

@@ -5,15 +5,15 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Ports;
 import frc.robot.commands.LaunchCommand;
 import frc.robot.commands.LauncherStopCommand;
-import frc.robot.subsystems.SC25Launcher;
+import frc.robot.subsystems.SKT25Launcher;
 
 public class SC25LauncherBinder implements CommandBinder
 {
-    Optional<SC25Launcher> launcherSubsystem;
+    Optional<SKT25Launcher> launcherSubsystem;
 
     Trigger launchOperatorButton;
 
-    public  SC25LauncherBinder(Optional<SC25Launcher> launcherSubsystem)
+    public  SC25LauncherBinder(Optional<SKT25Launcher> launcherSubsystem)
     {
         this.launcherSubsystem = launcherSubsystem;
 
@@ -28,7 +28,7 @@ public class SC25LauncherBinder implements CommandBinder
         {
             return;
         }
-        SC25Launcher launcher = launcherSubsystem.get();
+        SKT25Launcher launcher = launcherSubsystem.get();
 
         launchOperatorButton.whileTrue(new LaunchCommand(launcher));
         launchOperatorButton.onFalse(new LauncherStopCommand(launcher));

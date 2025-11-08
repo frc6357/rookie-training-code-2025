@@ -1,7 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.SC25Intake;
+import frc.robot.subsystems.SKT25Intake;
 
 import edu.wpi.first.wpilibj.DriverStation;
 
@@ -9,11 +9,11 @@ import frc.robot.Konstants.IntakeConstants.ArmPosition;
 
 public class IntakePosButtonCommand extends Command
 {
-    private final SC25Intake intake;
+    private final SKT25Intake intake;
     private final ArmPosition angle;
 
 
-    public IntakePosButtonCommand(ArmPosition angle, SC25Intake intake)
+    public IntakePosButtonCommand(ArmPosition angle, SKT25Intake intake)
     {
         this.angle = angle;
         this.intake = intake;

@@ -1,15 +1,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.SC25Launcher;
+import frc.robot.subsystems.SKT25Launcher;
 import static frc.robot.Konstants.LauncherConstants.kStopSpeed;
 
 public class LauncherStopCommand extends Command 
 {
-    private final SC25Launcher launcher;
+    private final SKT25Launcher launcher;
 
     // Constructor for the intake subsystem eject command.
-    public LauncherStopCommand(SC25Launcher launcher)
+    public LauncherStopCommand(SKT25Launcher launcher)
     {
         this.launcher = launcher;
     }

@@ -15,7 +15,7 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class SC25Drivetrain extends SubsystemBase {
+public class SKT25Drivetrain extends SubsystemBase {
 
     private final SparkMax leftLeader;
     private final SparkMax leftFollower;
@@ -24,7 +24,7 @@ public class SC25Drivetrain extends SubsystemBase {
 
     private final DifferentialDrive diffDrive;
 
-    public SC25Drivetrain() 
+    public SKT25Drivetrain() 
     {
         leftLeader = new SparkMax(kLeftLeader.ID, MotorType.kBrushed);
         leftFollower = new SparkMax(kLeftFollower.ID,  MotorType.kBrushed);

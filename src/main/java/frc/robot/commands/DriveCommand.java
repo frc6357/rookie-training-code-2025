@@ -1,7 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.SC25Drivetrain;
+import frc.robot.subsystems.SKT25Drivetrain;
 
 // import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
@@ -10,7 +10,7 @@ import java.util.function.DoubleSupplier;
 public class DriveCommand extends Command {
   private final DoubleSupplier m_xSpeed;
   private final DoubleSupplier m_zRotation;
-  private final SC25Drivetrain m_drive;
+  private final SKT25Drivetrain m_drive;
 
   /**
    * Used to drive the robot, uses arcade drive by default, you will need to modify
@@ -20,7 +20,7 @@ public class DriveCommand extends Command {
    * @param xSpeed The speed forwards and backwards
    * @param zRotation The speed to turn the drivetrain at
    */
-  public DriveCommand(SC25Drivetrain driveSubsystem, 
+  public DriveCommand(SKT25Drivetrain driveSubsystem, 
       DoubleSupplier xSpeed, DoubleSupplier zRotation) {
     // Save parameters to local variables for use later
     m_xSpeed = xSpeed;

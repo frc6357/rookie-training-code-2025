@@ -2,17 +2,17 @@ package frc.robot.commands;
 
 import java.util.function.Supplier;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.SC25Intake;
+import frc.robot.subsystems.SKT25Intake;
 import static frc.robot.Konstants.IntakeConstants.kArmSpeed;
 
 // import com.revrobotics.RelativeEncoder;
 
 public class IntakeJoystickCommand extends Command {
-    private final SC25Intake intake;
+    private final SKT25Intake intake;
     private final Supplier<Double> joystickInput;
 
 
-    public IntakeJoystickCommand(Supplier<Double> setpointChange, SC25Intake intake)
+    public IntakeJoystickCommand(Supplier<Double> setpointChange, SKT25Intake intake)
     {
         this.joystickInput = setpointChange;
         this.intake = intake;
