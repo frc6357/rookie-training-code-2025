@@ -25,7 +25,7 @@ public class IntakePosButtonCommand extends Command
     public void initialize()
     {
         intake.setTargetAngle(angle);
-        intake.isRunning = true;
+        //intake.isRunning = true; //TODO Uncomment when isRunning is fixed!
     }
 
     @Override

@@ -23,165 +23,213 @@ import frc.robot.Konstants.IntakeConstants.ArmPosition;
 @SuppressWarnings("unused")
 public class SKT25Intake extends SubsystemBase
 {
-    final double motorRatio = 12.5;
-    final int gear1Rotation = 1;
-    final int gear2Rotation = 1;
-    final int degrees = 360;
-
+    // All memory objects needed for the intake subsystem.
+    int gear1Rotation = 1;
+    int gear2Rotation = 1;
+    int degrees = 360;
     SparkMax intakeMotor;
     SparkMax armMotor;
-
     SparkMaxConfig armConfig;
     SparkClosedLoopController mPID;
-
     double mTargetAngle;
     double mCurrentAngle;
-
+    double motorRatio = 12.5;
     RelativeEncoder mEncoder;
-
     ArmFeedforward armFeedforward;
+    boolean isRunning;
 
-    public boolean isRunning;
-
-    // Intake constructor (used to initialize our motor object).
+    /*
+     * Intake constructor (used to initialize our motor object).
+     */
     public SKT25Intake()
     {
-        //Initialize our motor object.
-        intakeMotor = new SparkMax(kIntakeMotor.ID, MotorType.kBrushless);
-        armMotor = new SparkMax(kArmMotor.ID, MotorType.kBrushless);
-
-        armConfig = new SparkMaxConfig();
-
-        armConfig = new SparkMaxConfig();
-        armConfig.closedLoop
-            .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
-            .p(kArmP)
-            .i(kArmI)
-            .d(kArmD)
-            .outputRange(-1, 1)
-            .velocityFF(kArmFF)
-            .maxMotion.maxVelocity(kArmV);
-        armConfig.closedLoop.maxMotion
-            .maxAcceleration(300)
-            .maxVelocity(150)
-            .allowedClosedLoopError(0.1);
-        armConfig
-            .idleMode(IdleMode.kBrake)
-            .smartCurrentLimit(40);
+        // Initialize our motor object.
         
-        mPID = armMotor.getClosedLoopController();
-        mEncoder = armMotor.getEncoder();
+        
 
-        mTargetAngle = 0.0;
-        mCurrentAngle = 0.0;
+        // Initialize arm motor config object.
+        
 
-        mEncoder.setPosition(0);
+        // Apply arm motor configurations.
+        
+            
+            
+            
+            
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+        
+        // Set mPID and mEncoder objects to get their controller and encoder respectively.
+        
+        
+
+        // Set the target and current angles to 0.0.
+        
+        
+        
+        // Set the encoder position to 0.
+        
     }
 
     /*
      *  ARM (Not intaking related)
      */
-    
+
+    /*
+     * Method to reset the encoder's value.
+     */
     public void resetEncoder()
     {
-        mEncoder.setPosition(0);
+        // Set the position of the encoder to 0.
+        
     }
 
+    /*
+     * Method to set the target angle of the arm based on enum position.
+     */
     public void setTargetAngle(ArmPosition position)
     {
-        setTargetAngle(position.angle);
+        // Set the target angle based on the enum position passed in.
+        
     }
 
+    /*
+     * Method to get the current position of the arm in degrees.
+     */
     public double getArmPosition()
     {
-        //Set conversion factor
-        double motorRotations = mEncoder.getPosition();
-        double angle = motorRotations / motorRatio * degrees;
-        return angle;
+        // Set conversion factor, do the math for your angle, then return the value of angle.
+        // Delete placeholder to instead return angle.
+        double placeholder = 0.0;
+        return placeholder;
     }
 
+    /*
+     * Method to set the target angle of the arm in degrees.
+     */
     private void setTargetAngle(double angleDegrees)
     {
-        mTargetAngle = angleDegrees;
-        SmartDashboard.putNumber("EffectorTargetAngle", mTargetAngle);
-        SmartDashboard.putNumber("EffectorCurrentAngle", getArmPosition());
+        // Set your target angle to the passed in angle.
+        
 
-        double motorRotations = angleDegrees * motorRatio / degrees;
+        // Display target and current angles on SmartDashboard for tuning purposes.
+        
 
-        //Come back and change this, need fraction for Encoder Rotations in place of angle
-        double targetAngleRadians = 
-            Degrees.of(angleDegrees)
-            .plus(Degrees.of(90))
-            .in(Radians);
-        mPID.setReference(motorRotations, ControlType.kPosition,ClosedLoopSlot.kSlot0);
+        // Convert angle in degrees to motor rotations, then set the reference for the PID controller.
+        
+        
+        
+        
+        
+        
     }
 
+    /*
+     * Method to get the target angle of the arm in degrees.
+     */
     public double getTargetArmPosition()
     {
-       return mTargetAngle;
+        // Return your target angle.
+        // Delete placeholder to instead return angle.
+        double placeholder = 0.0;
+        return placeholder;
     }
 
+    /*
+     * Method to check if the arm is at the target position, during auto and teleop.
+     */
     public boolean isArmAtTargetPosition()
     {
-        if (DriverStation.isTeleop())
-        {
-            return Math.abs(getTargetArmPosition() - getArmPosition()) < kArmTolerance;
-        } 
-        else 
-        {
-            return Math.abs(getTargetArmPosition() - getArmPosition()) < Rotations.of(0.1).in(Degrees);
-        }
+        // if the DriverStation is in teleop, use kArmTolerance, else use 0.1 rotations for autonomous.
+        
+        
+        
+        
+         
+        
+        // Delete "true" and return whether the arm is at the target position, once the method is complete.
+        return true;
     }
 
-    // Hold the intake in plce at its current angle.
+    /*
+     * Method to hold the arm at its current position.
+     */
     public void hold()
     { 
-        if(isRunning == true)
-        {
-            mTargetAngle = getArmPosition();
-            isRunning = false;
-        }
-        setTargetAngle(mTargetAngle);   
+        // If the arm was being run, set the target angle to the arm's current position.
+        
+        
+        
+        
+        
+        
     }
 
+    /*
+     * Method to run the arm at a given speed, with gravity compensation.
+     */
     public void runArm(double armspeed)
     {
-        double angleDegrees = getArmPosition();
-        double targetAngleRadians = 
-            Degrees.of(angleDegrees)
-            .plus(Degrees.of(90))
-            .in(Radians);
+        // Set angleDegrees to the current arm position.
         
-        double offset = .05 * Math.cos(targetAngleRadians);
-        armMotor.set(armspeed + offset);
+        // Calculate the target angle in radians for the cosine function.
+        
+        
+        
+        
+        // Calculate offset for gravity compensation and set the arm motor speed.
+        
+        
     }
 
-    // Method to deploy the intake outward at the start of a match.
+    /*
+     * Method to move the arm to the "intake" position at the start of a match.
+     */
     public void leave() 
     {
-        setTargetAngle(ArmPosition.kZeroPositionAngle.angle);
+        // Set the target angle to the zero position angle.
+        
     }
 
     /*
      *  INTAKING (Not arm related)
      */
 
-    // Method that sets the intake speed to rollerSpeed (speed value).
+    /*
+     * Method that sets the intake speed to rollerSpeed (speed value).
+     */
     public void setIntakeSpeed(double rollerSpeed)
     {
-        intakeMotor.set(rollerSpeed);
+        // Set the roller speed to the passed in roller speed.
+        
     }
 
-    // Method to return motor speed, if requested.
+    /*
+     * Method to return motor speed, if requested.
+     */
     public double getMotorSpeed ()
     {
-        return intakeMotor.get();
+        // Return the intake motor speed.
+        // Delete placeholder and replace with motor speed, once complete.
+        double placeholder = 0.0;
+        return placeholder;
     }
     
-    //Stop motors
+    /*
+     * Method to stop the intake motor.
+     */
     public void stopIntake()
     {
-        intakeMotor.stopMotor();
+        // Call the stopMotor method on intakeMotor.
+        
     }
 
     public void periodic()

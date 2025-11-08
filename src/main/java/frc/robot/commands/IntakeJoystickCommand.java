@@ -32,7 +32,7 @@ public class IntakeJoystickCommand extends Command {
         double armdividend = joystickInput.get();
         armspeed = armspeed * armdividend;
          intake.runArm(armspeed);
-         intake.isRunning = true;         
+         //intake.isRunning = true; //TODO Uncomment when isRunning is fixed!       
        }
 
        else if (joystickInput.get() < 0)
@@ -41,7 +41,7 @@ public class IntakeJoystickCommand extends Command {
         double armspeed = -kArmSpeed;
         armspeed = armspeed * armdividend;
         intake.runArm(-armspeed);
-        intake.isRunning = true;
+        //intake.isRunning = true; //TODO Uncomment when isRunning is fixed!
        }
        else
        {
